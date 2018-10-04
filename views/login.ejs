@@ -1,0 +1,72 @@
+<% layout('layout/page') -%>
+<% block('title','Вход') -%>
+
+<link rel="stylesheet" href="/css/reg.css">
+<style>.fogot_pas{
+        display: block;
+        clear: both;
+        text-align: center;
+        color: #888;
+        margin-bottom: 3em;
+}</style>
+
+
+<form id="forma" name="reg" action="login" method="post">
+    <p class="RegLab">Вход</p>
+    <label>Email </label>
+    <input class="input_reg" type="email" id="email" name="user[email]" placeholder="Email" required>
+    <label id="noemail">Данный email не найден</label>
+    <label>Пароль </label>
+    <input class="input_reg" id="pass" type="password" name="user[password]" placeholder="Пароль" maxlength="20"
+        minlength="8" required>
+    <label id="nopass">Неверный пароль</label>
+    <input type="submit" class="submit_reg" value="Войти">
+    <p class="log_in_with">Войти через: <a class="social fb"></a> <a class="social vk"></a></p>
+    <a href="registration" class="log_in"> Нет аккаунта? Регистрация.</a>
+    <a class="fogot_pas">Забыли пароль?</a>
+</form>
+
+
+<script>
+    $('#noemail').hide();
+    $('#nopass').hide();
+
+    $('#pass').on('input', function () {
+        $('#nopass').hide();
+    });
+    $('#email').on('input', function () {
+        $('#noemail').hide();
+    });
+
+    $('#forma').on('submit', function () {
+        var form = $(this);
+    console.log(form);
+        $.ajax({
+            url: "/login",
+            method: "POST",
+            data: form.serialize(),
+            statusCode: {
+                200: function () {
+                    form.html("Вы вошли в сайт").addClass('alert-success');
+                    setTimeout(() => {
+                        window.location.href = "/";
+                    }, 300);
+                },
+                403: function (jqXHR) {
+                    var error = JSON.parse(jqXHR.responseText);
+                    $('.error', form).html(error.message);
+                },
+                405: function () {
+                    $('#noemail').show();
+                    return false;
+                },
+                406: function () {
+                    $('#nopass').show();
+                    return false;
+                }
+            }
+        });
+        return false;
+
+    })
+</script>

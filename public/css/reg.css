@@ -1,0 +1,126 @@
+#forma {
+    width: 60%;
+    border: 1px solid silver;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #fafafa;
+    margin-right: 2%;
+    margin-top: 2%;
+    min-height: 400px;
+    float: left;
+    margin-left: 20%;
+}
+
+.input_reg {
+    display: block;
+    margin-bottom: 10px;
+    width: 50%;
+    font-size: 1em;
+    float: left;
+    border: 2px solid silver;
+    border-radius: 5px;
+    padding: 4px;
+    clear: both;
+    margin-left: 25%;
+}
+
+.input_reg:focus {
+    border: 2px solid #f58b8b;
+}
+
+.input_reg:not([type="submit"]):valid:focus {
+    border-color: #2ecc71;
+}
+
+#forma label {
+    float: left;
+    display: block;
+    clear: both;
+    margin-left: 25%;
+}
+
+.submit_reg {
+    display: block;
+    width: 25%;
+    font-size: 1em;
+    float: left;
+    border: 2px solid silver;
+    border-radius: 5px;
+    padding: 10px;
+    clear: both;
+    margin-left: 37.5%;
+    cursor: pointer;
+    color: #333;
+    margin-bottom: 10px;
+    margin-top: 2em;
+}
+
+.submit_reg:hover {
+    background-color: #c0c0c06c;
+    color: black;
+}
+
+.log_in {
+    display: block;
+    clear: both;
+    text-align: center;
+    margin-bottom: 3em;
+    color: #888;    
+}
+
+.log_in_with {
+    display: block;
+    clear: both;
+    text-align: center;
+    color: #888;
+}
+
+.fb,.vk{
+    display: inline;
+    color: #888;
+    cursor: default;
+    margin-left: 5px;
+}
+
+.fb::before {
+    content: '';
+    background-color: #888;
+    -webkit-mask: url('/img/facebook.svg') no-repeat center;
+    mask: url('/img/facebook.svg') no-repeat center;
+    padding: 8px;
+}
+
+.vk::before {
+    content: '';
+    background-color: #888;
+    -webkit-mask: url('/img/vk.svg') no-repeat center;
+    mask: url('/img/vk.svg') no-repeat center;
+    padding: 8px;
+}
+
+.log_in:hover{
+    color: #4431eb;
+}
+
+.RegLab{
+    color:#666;
+    font-family: Comic Sans Ms, sans-serif;
+    font-size: 1.8em;
+    display: block;
+    clear: both;
+    text-align: center;
+    padding: 1em 0;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+.fb:hover,.vk:hover { background: #ddd; box-shadow: 1px 1px 1px #aaa; }
+
+.vk:hover::before,.fb:hover::before{ background: #333; }
+
+#noemail,#nopass{
+    color:red;
+    font-weight: bold;
+    margin-top: -5px;
+    font-size: .9em;
+    margin-bottom: 10px;
+}

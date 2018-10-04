@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/topNavigation.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="navbar">
+    <a class="navpoint" href="/">Главная</a>
+    <a href="/cabinet">Кабинет</a>
+
+    <% if (!user) { %>
+    <a style="float:right" href="/login">Вход</a>
+    <% }else{ %>
+        <div class="user-menu">
+                <div class="user-menu-item">
+                  <div class="user-image-wrapper">
+                    <img class="user-image" src="https://diamondragon2003.github.io/Pen/img11/avatar.jpg">
+                  </div>
+                  <div class="user-name-wrapper">
+                    <%-user.name -%> <i class="fa fa-caret-down"></i>
+                  </div>
+                </div>
+                <div class="user-dropdown">
+                  <a href="#" class="dropdown-item"><span class="mr-3"><i class="fa fa-bell"></i></span> Оповещания</a>
+                  <a href="/cabinet" class="dropdown-item"><span class="mr-3"><i class="fa fa-user"></i></span> Кабинет</a>
+                  <a href="#" class="dropdown-item"><span class="mr-3"><i class="fa fa-comments"></i></span> Чат</a>
+                  <a href="" onclick="$(document.body).append($('<form method=POST action=/logout>'));$('form').submit();return false" class="dropdown-item"><span class="mr-3"><i class="fa fa-power-off"></i></span> Выйти</a>
+                </div>
+              </div>
+    <% } %>
+</div>
+
+<script>
+    $(".user-menu").click(function () {
+        $(this).toggleClass("show");
+    });
+
+    var i = 0;
+    $('html').click(function () {
+        $(".user-menu").removeClass("show")
+    });
+
+    $('.user-menu').click(function (event) {
+        event.stopPropagation();
+    });
+
+    $('.user-dropdown').click(function (event) {
+        event.stopPropagation();
+    });
+</script>
