@@ -14,12 +14,11 @@ app.engine('ejs', require('ejs-locals'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+
+app.use(bodyParser.urlencoded({ extended: true, limit: '5mb' }));
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 
